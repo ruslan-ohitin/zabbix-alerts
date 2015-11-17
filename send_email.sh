@@ -25,5 +25,14 @@ MAIL_MESSAGE="Date: ${MAIL_DATE}
 \nContent-Type: text/plain; charset=UTF-8
 \n\n${MAIL_TEXT}"
 
-echo -e ${MAIL_MESSAGE} | /usr/bin/msmtp --host=${MAIL_SERVER} --port=${MAIL_PORT} --tls=on --tls-certcheck=off --tls-starttls=off --auth=login --user=${MAIL_FROM} --passwordeval="echo ${MAIL_PASSWORD}" -f ${MAIL_FROM} ${MAIL_TO} 
+echo -e ${MAIL_MESSAGE} | /usr/bin/msmtp \
+    --host=${MAIL_SERVER} \
+    --port=${MAIL_PORT} \
+    --tls=on \
+    --tls-certcheck=off \
+    --tls-starttls=off \
+    --auth=login \
+    --user=${MAIL_FROM} \
+    --passwordeval="echo ${MAIL_PASSWORD}" \
+    -f ${MAIL_FROM} ${MAIL_TO} 
 
