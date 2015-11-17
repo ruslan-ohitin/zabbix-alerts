@@ -9,11 +9,11 @@
 # ruslan.ohitin@gmail.com
 # https://github.com/ruslan-ohitin/zabbix-alerts
 
+TITLE_PREFIX="Prefix: " # Use this to customize pushes from different servers
+
 param=${1}
 API_KEY=${param%:*}
 DEV_IDEN=${param#*:}
-
-TITLE_PREFIX="Prefix: " # Use this to customize pushes from different servers
 
 if [ $DEV_IDEN == $API_KEY ]; then
   DEV_CMD=""
@@ -21,10 +21,14 @@ else
   DEV_CMD="-d device_iden=$DEV_IDEN "
 fi
 
+TITLE=$2
+BODY=$3
+
 curl https://api.pushbullet.com/api/pushes \
       -u ${API_KEY}: \
       ${DEV_CMD} \
       -d type=note \
       -X POST \
-      -d title="${TITLE_PREFIX}${2}" \
-      -d body="${3}"
+      -d title="${TITLE_PREFIX}${TITLE}" \
+      -d body="${BODY}"
+
