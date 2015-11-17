@@ -1,5 +1,14 @@
 #!/bin/bash
-# This script send a text sms at the command line by creating
+
+# sendsms - script for sending text sms using smstools3 package
+# 
+# I do not remember the source of this script
+# 
+# Ruslan Ohitin 2015
+# ruslan.ohitin@gmail.com
+# https://github.com/ruslan-ohitin/zabbix-alerts
+
+## This script send a text sms at the command line by creating
 # a sms file in the outgoing queue.
 
 # $1 is the destination phone number.
